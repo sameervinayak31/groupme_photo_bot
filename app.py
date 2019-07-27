@@ -10,7 +10,7 @@ def webhook():
   data = request.get_json()
 
   # We don't want to reply to ourselves!
-  if data['name'] != 'DEVEN BOT':
+  if (data['name'] != 'DEVEN BOT') & ('hi deven' in data['text'].lower()):
     msg = '{}, you sent "{}".'.format(data['name'], data['text'])
     send_message(msg)
 
@@ -31,9 +31,18 @@ def send_message(msg):
         }
       ]
     }
-    post_data = {'text':message, 'picture_url':pic_url}
+    post_data = {'text':message, 'picture_url':get_random_pic_url()}
     
     requests.post('https://api.groupme.com/v3/bots/post', params = post_params, data=post_data)
+
+
+def get_random_pic_url():
+
+    with open('bot_urls.txt') as links:
+        links_list = links.read().split('\n')
+        links_len = len(links_list)
+        random_index = int(random.random() * links_len)
+        return links_list[random_index]
 
 
 def get_random_message():
