@@ -41,7 +41,7 @@ def get_random_message():
     if random.random() < .3:
         return ''
     else:
-        with open('devenbot/bot_messages.txt') as messages:
+        with open('bot_messages.txt') as messages:
             txt = messages.read().split('\n')
             txt_len = len(txt)
             random_index = int(random.random() * txt_len)
