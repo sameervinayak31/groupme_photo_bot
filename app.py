@@ -1,10 +1,5 @@
-import os
-import json
-import random
 import requests
-
-from urllib.parse import urlencode
-from urllib.request import Request, urlopen
+import random
 
 from flask import Flask, request
 
@@ -28,7 +23,7 @@ def send_message(msg):
     
     post_params = {
       "bot_id"  : "f419e110063882523cf142b91a",
-      "text"    : message,
+      "text"    : get_random_message(),
       "attachments" : [
         {
           "type"  : "image",
