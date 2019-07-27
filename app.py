@@ -1,5 +1,7 @@
 import os
 import json
+import random
+import requests
 
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -21,12 +23,31 @@ def webhook():
 
 
 def send_message(msg):
-    url  = 'https://api.groupme.com/v3/bots/post'
-
-    data = {
-        'bot_id' : os.getenv('BOT_ID'),
-        'text'   : msg,
-    }
+    message = 'yerrrrr deven'
+    pic_url = "https://i.groupme.com/720x960.jpeg.631b921f22cd4507aa6cabcfb427d4ac"
     
-    request = Request(url, urlencode(data).encode())
-    json = urlopen(request).read().decode()
+    post_params = {
+      "bot_id"  : "f419e110063882523cf142b91a",
+      "text"    : message,
+      "attachments" : [
+        {
+          "type"  : "image",
+          "url"   : pic_url
+        }
+      ]
+    }
+    post_data = {'text':message, 'picture_url':pic_url}
+    
+    requests.post('https://api.groupme.com/v3/bots/post', params = post_params, data=post_data)
+
+
+def get_random_message():
+
+    if random.random() < .3:
+        return ''
+    else:
+        with open('devenbot/bot_messages.txt') as messages:
+            txt = messages.read().split('\n')
+            txt_len = len(txt)
+            random_index = int(random.random() * txt_len)
+            return txt[random_index]
