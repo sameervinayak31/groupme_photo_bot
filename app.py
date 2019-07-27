@@ -22,7 +22,7 @@ def send_message(msg):
     pic_url = "https://i.groupme.com/720x960.jpeg.631b921f22cd4507aa6cabcfb427d4ac"
     
     post_params = {
-      "bot_id"  : "f419e110063882523cf142b91a",
+      "bot_id"  : os.getenv('BOT_ID'),
       "text"    : get_random_message(),
       "attachments" : [
         {
