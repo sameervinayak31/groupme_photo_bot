@@ -10,7 +10,6 @@ app = Flask(__name__)
 def webhook():
   data = request.get_json()
 
-  # We don't want to reply to ourselves!
   if (data['name'] != 'DEVEN BOT') & ('hi deven' in data['text'].lower()):
     pic_url = send_message()
 
