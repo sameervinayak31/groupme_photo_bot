@@ -1,7 +1,6 @@
 import requests
 import random
 import os
-
 from flask import Flask, request
 
 app = Flask(__name__)
@@ -13,7 +12,7 @@ def webhook():
   if (data['name'] != 'DEVEN BOT') & ('hi deven' in data['text'].lower()):
     pic_url = send_message()
 
-  return pic_url, 200
+  return 'success', 200
 
 
 def send_message():
@@ -33,6 +32,7 @@ def send_message():
     
     requests.post('https://api.groupme.com/v3/bots/post', params = post_params, data=post_data)
     return pic_url
+
 
 def get_random_pic_url():
 
