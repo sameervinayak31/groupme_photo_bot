@@ -2,8 +2,7 @@
 
 A simple, lightweight service triggered by keywords in a GroupMe chat group that sends images and messages on demand.
 
-The service is hosted on Heroku, which provided an easy (and free) way to set up a gunicorn-based python webserver. Flask more than serves
-the purpose of handling HTTP POST requests, and python requests communicates back to the GroupMe API.
+The service is hosted on Heroku, which provided an easy (and free) way to set up a gunicorn-based python webserver. Flask provides the mechanism for receiving the HTTP POST requests, and python requests communicates back to the GroupMe API.
 
 Notes:
 - Images must be hosted on GroupMe and first uploaded with their Image Service, which generates a url to the image. The outgoing message
