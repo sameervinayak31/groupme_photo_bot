@@ -17,7 +17,7 @@ def webhook():
 
 def send_message():
     pic_url = get_random_pic_url()
-    
+
     post_params = {
       "bot_id"  : os.getenv('BOT_ID'),
       "text"    : get_random_message(),
